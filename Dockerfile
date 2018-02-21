@@ -13,7 +13,7 @@ sed -i 's#ServerSignature .*#ServerSignature Off#g' /etc/apache2/httpd.conf && \
 sed -i 's#DocumentRoot ".*#DocumentRoot "/app"#g' /etc/apache2/httpd.conf && \
 sed -i 's#<Directory ".*#<Directory "/app">#g' /etc/apache2/httpd.conf && \
 sed -i 's#Options Indexes FollowSymLinks#Options -Indexes +FollowSymLinks#g' /etc/apache2/httpd.conf && \
-sed -i 's#AllowOverride none#AllowOverride All#g' /etc/apache2/httpd.conf
+sed -i 's#AllowOverride None#AllowOverride All#g' /etc/apache2/httpd.conf
 
 EXPOSE 8000
 
