@@ -4,10 +4,9 @@ FROM alpine:3.7
 ADD ./root /
 
 RUN apk add --update apache2 php7-apache2 && rm -f /var/cache/apk/* && \
+mkdir -p /run/apache2/ && \
 chown -R apache:apache /app && \
 chmod -R 755 /scripts
-
-#Add code to redirect apache logs to /dev/stdout and /dev/stderr
 
 EXPOSE 8000
 
