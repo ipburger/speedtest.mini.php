@@ -15,7 +15,7 @@ do
 done
 
 # set apache as owner/group
-chown -R apache:apache /app
+chown -R apache:apache /app /var/log/apache2 /run/apache2/
 
 # execute any pre-exec scripts, useful for images
 # based on this image
