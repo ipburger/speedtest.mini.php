@@ -21,8 +21,6 @@ sed -i 's#ErrorLog logs/error.log#ErrorLog /dev/stderr#g' /etc/apache2/httpd.con
 sed -i 's#CustomLog logs/access.log combined#CustomLog /dev/stdout combined#g' /etc/apache2/httpd.conf && \
 sed -i 's|#LoadModule rewrite_module modules/mod_rewrite.so|LoadModule rewrite_module modules/mod_rewrite.so|g' /etc/apache2/httpd.conf
 
-EXPOSE ${HTTPD_LISTEN_PORT}
-
 WORKDIR /app
 
 ENTRYPOINT ["/scripts/run.sh"]
