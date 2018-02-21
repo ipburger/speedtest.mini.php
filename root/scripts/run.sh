@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # execute any pre-init scripts, useful for images
 # based on this image
