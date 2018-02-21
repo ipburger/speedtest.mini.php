@@ -27,6 +27,5 @@ do
 	fi
 done
 
-# Drop root privilege (no way back), exec provided command as user apache
 cmd=exec; for i; do cmd="$cmd '$i'"; done
-exec su -s /bin/sh -c "$cmd" apache
+exec su -s /bin/sh -c "$cmd" root
