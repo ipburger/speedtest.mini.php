@@ -3,7 +3,7 @@ FROM alpine:3.7
 
 ADD ./root /
 
-RUN apk add --update apache2 php7-apache2 && rm -f /var/cache/apk/* && \
+RUN apk add --update apache2 php7-apache2 php7-openssl && rm -f /var/cache/apk/* && \
 mkdir -p /run/apache2/ && \
 chown -R apache:apache /app /var/log/apache2 /run/apache2/ /dev/stdout /dev/stderr && \
 chmod -R 755 /scripts && \
