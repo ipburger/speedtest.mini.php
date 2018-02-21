@@ -12,10 +12,11 @@ sed -i 's#ServerTokens .*#ServerTokens Prod#g' /etc/apache2/httpd.conf && \
 sed -i 's#ServerSignature .*#ServerSignature Off#g' /etc/apache2/httpd.conf && \
 sed -i 's#DocumentRoot ".*#DocumentRoot "/app"#g' /etc/apache2/httpd.conf && \
 sed -i 's#<Directory ".*#<Directory "/app">#g' /etc/apache2/httpd.conf && \
-sed -i 's#Options Indexes FollowSymLinks#Options -Indexes +FollowSymLinks#g' /etc/apache2/httpd.conf && \
+sed -i 's#Options Indexes FollowSymLinks#Options FollowSymLinks#g' /etc/apache2/httpd.conf && \
 sed -i 's#AllowOverride None#AllowOverride All#g' /etc/apache2/httpd.conf && \
 sed -i 's#ErrorLog logs/error.log#ErrorLog /dev/stderr#g' /etc/apache2/httpd.conf && \
-sed -i 's#CustomLog logs/access.log combined#CustomLog /dev/stdout combined#g' /etc/apache2/httpd.conf
+sed -i 's#CustomLog logs/access.log combined#CustomLog /dev/stdout combined#g' /etc/apache2/httpd.conf && \
+sed -i 's|#LoadModule rewrite_module modules/mod_rewrite.so|LoadModule rewrite_module modules/mod_rewrite.so|g' /etc/apache2/httpd.conf
 
 EXPOSE 8000
 
