@@ -13,4 +13,4 @@ EXPOSE 8000
 WORKDIR /app
 
 ENTRYPOINT ["/scripts/run.sh"]
-CMD ["httpd"]
+CMD ["httpd", "-DFOREGROUND"]
