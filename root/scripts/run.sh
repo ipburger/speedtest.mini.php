@@ -30,4 +30,4 @@ done
 
 echo "[i] Starting daemon..."
 # run apache httpd daemon
-httpd -X
+httpd -DFOREGROUND
