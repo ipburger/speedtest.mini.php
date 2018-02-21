@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# Httpd entrypoint (pid 1), run as root
+[ "$1" = "httpd" ] || exec "$@" || exit $?
+
 # execute any pre-init scripts, useful for images
 # based on this image
 for i in /scripts/pre-init.d/*sh
@@ -12,12 +15,7 @@ do
 done
 
 # set apache as owner/group
-if [ "$FIX_OWNERSHIP" != "" ]; then
-	chown -R apache:apache /app
-fi
-
-# display logs
-#tail -F /var/log/apache2/*log &
+chown -R apache:apache /app
 
 # execute any pre-exec scripts, useful for images
 # based on this image
@@ -29,6 +27,6 @@ do
 	fi
 done
 
-echo "[i] Starting daemon..."
-# run apache httpd daemon
-httpd -DFOREGROUND
+# Drop root privilege (no way back), exec provided command as user apache
+cmd=exec; for i; do cmd="$cmd '$i'"; done
+exec su -s /bin/sh -c "$cmd" apache
